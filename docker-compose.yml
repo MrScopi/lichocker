@@ -1,12 +1,12 @@
 version: '3.7'
 services:
-  mongodb:
-    image: mongo:4.2.8
+  mongo:
+    image: mongo:5.0
+    restart: always
     container_name: mongodb
-    # Seed the database for initialization
-    #entrypoint: ["bash", "mongo lichess /home/lila/bin/mongodb/indexes.js"]
     volumes:
-      - $LILA_REPOSITORY_DIR:/home/lila:delegated
+      - $LICHESS_DATA_DB_DIR:/data/db
+      - $LILA_REPOSITORY_DIR:/data/lila:delegated
 
   redis:
     image: redis:6.0.5
