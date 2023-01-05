@@ -4,7 +4,7 @@ services:
     image: mongo:4.2.8
     container_name: mongodb
     # Seed the database for initialization
-    entrypoint: ["bash", "mongo lichess /home/lila/bin/mongodb/indexes.js"]
+    #entrypoint: ["bash", "mongo lichess /home/lila/bin/mongodb/indexes.js"]
     volumes:
       - $LILA_REPOSITORY_DIR:/home/lila:delegated
 
