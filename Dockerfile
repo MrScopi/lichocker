@@ -24,8 +24,13 @@ RUN if [ -z "$(command -v yum)" ] ; \
 
 ARG YARN_VERSION=1.22.4
 
-RUN wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" && \
-    chmod +x /bin/pnpm
+RUN apt-get install snapd && \
+    snap install core && \
+    snap install node && \
+    npm install pnpm
+
+#RUN wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" && \
+#    chmod +x /bin/pnpm
 #RUN apt-get update && apt-get install -y gnupg2 && \
 #    apt-get install -y apt-transport-https ca-certificates && \
 #    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
