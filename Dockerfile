@@ -16,7 +16,8 @@ RUN apt-get update && \
     sbt sbtVersion -Dsbt.rootdir=true
 
 # Install pnpm
-RUN curl -fsSL https://get.pnpm.io/install.sh | bash -
+RUN curl -fsSL https://get.pnpm.io/install.sh | bash - && \
+    source /root/.bashrc
 
 ENV LANG "en_US.UTF-8"
 ENV LC_CTYPE "en_US.UTF-8"
