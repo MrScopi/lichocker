@@ -13,7 +13,8 @@ services:
   lila:
     build:
       context: .
-    entrypoint: ["/home/lichess/run.sh"]
+    #entrypoint: ["/home/lichess/run.sh"]
+    entrypoint: ["bash"]
     #network_mode: host
     working_dir: /home/lichess/lila
     environment:
