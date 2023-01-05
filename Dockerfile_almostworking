@@ -30,10 +30,14 @@ RUN sudo apt-get update && sudo apt update \
   #&& sudo apt install -y \ 
   nano
 
-RUN curl -fsSL https://get.pnpm.io/install.sh | bash -
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
-ENV PNPM_HOME="/home/lichess/.local/share/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+RUN . /home/lichess/.nvm/nvm.sh && \
+    nvm --version && \
+    nvm install node && \
+    npm install -g pnpm && \
+    pnpm -v && \
+    pnpm setup
 
 RUN pnpm -v
 
