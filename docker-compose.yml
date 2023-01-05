@@ -14,7 +14,7 @@ services:
     build:
       context: .
     entrypoint: ["/home/lichess/run.sh"]
-    network_mode: host
+    #network_mode: host
     working_dir: /home/lichess/lila
     environment:
       - LILA_LOCATION=/home/lichess/lila
@@ -35,7 +35,7 @@ services:
       context: .
     working_dir: /lila-ws
     entrypoint: ["sbt", "run"]
-    network_mode: host
+    #network_mode: host
     environment:
       - SBT_OPTS=
         -Dmongodb.uri=mongodb://mongodb:27017/lichess
