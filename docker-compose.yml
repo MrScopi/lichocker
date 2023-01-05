@@ -3,13 +3,9 @@ services:
   mongodb:
     image: mongo:4.2.8
     container_name: mongodb
-    #ports:
-    #  - 27017:27017
 
   redis:
     image: redis:6.0.5
-    #ports:
-    #  - 6379:6379
 
   lila:
     build:
@@ -22,7 +18,7 @@ services:
       - LILA_LOCATION=/home/lichess/lila
       - LILA_UI_LOCATION=/home/lichess/lila/ui
       - SBT_OPTS=
-        -Dmongodb.uri=mongodb://mongodb:27017
+        -Dmongodb.uri=mongodb://mongodb:27017/lichess
         -Dredis.uri=redis://redis:6379
     volumes:
       - $LILA_REPOSITORY_DIR:/home/lichess/lila:delegated
@@ -40,7 +36,7 @@ services:
     #network_mode: host
     environment:
       - SBT_OPTS=
-        -Dmongodb.uri=mongodb://mongodb:27017
+        -Dmongodb.uri=mongodb://mongodb:27017/lichess
         -Dredis.uri=redis://redis:6379
     volumes:
       - $LILA_WS_REPOSITORY_DIR:/lila-ws:delegated
