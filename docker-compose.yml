@@ -3,6 +3,10 @@ services:
   mongodb:
     image: mongo:4.2.8
     container_name: mongodb
+    # Seed the database for initialization
+    entrypoint: ["bash", "mongo lichess /home/lichess/lila/bin/mongodb/indexes.js"]
+    volumes:
+      - $LILA_REPOSITORY_DIR:/home/lichess/lila:delegated
 
   redis:
     image: redis:6.0.5
@@ -11,8 +15,6 @@ services:
     build:
       context: .
     entrypoint: ["bash", "/home/lichess/run.sh"]
-    #entrypoint: ["bash"]
-    #network_mode: host
     working_dir: /home/lichess/lila
     environment:
       - LILA_LOCATION=/home/lichess/lila
@@ -33,7 +35,6 @@ services:
       context: .
     working_dir: /lila-ws
     entrypoint: ["sbt", "run"]
-    #network_mode: host
     environment:
       - SBT_OPTS=
         -Dmongodb.uri=mongodb://mongodb:27017/lichess
