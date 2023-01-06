@@ -42,7 +42,7 @@ ENV SBT_HOME="/home/lichess/.sdkman/candidates/sbt/current/bin"
 ENV PATH="$JAVA_HOME:$SBT_HOME:$PATH"
 
 RUN java --version
-RUN sbt sbt-version
+RUN cd ~ && sbt version
 
 # Silence the parallel citation warning.
 RUN sudo mkdir -p ~/.parallel && sudo touch ~/.parallel/will-cite
