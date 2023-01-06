@@ -38,7 +38,11 @@ RUN /home/lichess/build/sdkman-init.sh \
   && sdk install java 17.0.5-tem && sdk install sbt
 
 ENV JAVA_HOME="/home/lichess/.sdkman/candidates/java/current/bin"
-ENV PATH="JAVA_HOME:$PATH"
+ENV SBT_HOME="/home/lichess/.sdkman/candidates/sbt/current/bin"
+ENV PATH="$JAVA_HOME:$SBT_HOME:$PATH"
+
+RUN java --version
+RUN sbt sbt-version
 
 # Silence the parallel citation warning.
 RUN sudo mkdir -p ~/.parallel && sudo touch ~/.parallel/will-cite
