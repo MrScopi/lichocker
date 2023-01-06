@@ -1,12 +1,14 @@
 version: '3.7'
 services:
   mongodb:
-    image: mongo:5.0
+    build: ./mongo
     restart: always
+    entrypoint: ["mongo lichess /data/lila/bin/mongodb/indexes.js"]
     container_name: mongodb
     volumes:
       - $LICHESS_DATA_DB_DIR:/data/db
       - $LILA_REPOSITORY_DIR:/data/lila:delegated
+      # mongo lichess /data/lila/bin/mongodb/indexes.js
 
   redis:
     image: redis:6.0.5
