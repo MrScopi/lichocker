@@ -9,4 +9,6 @@ then
   "$LILA_UI_LOCATION"/build
 fi
 
+mongosh lichess < "$LILA_LOCATION"/bin/mongodb/indexes.js
+
 "$LILA_LOCATION"/lila run

@@ -17,17 +17,12 @@ USER lichess
 
 ADD build /home/lichess/build
 
-# mongodb
-#RUN sudo apt-key add /home/lichess/build/signatures/mongodb.asc \
-#  && echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org.list
-
 RUN sudo apt-get update && sudo apt update \
   && sudo apt-get install -y \
   unzip \
   zip \
   curl \
-  parallel \ 
-  #&& sudo apt install -y \ 
+  parallel \
   nano
 
 RUN curl -fsSL https://get.pnpm.io/install.sh | bash -
