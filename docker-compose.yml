@@ -34,11 +34,12 @@ services:
     build:
       context: .
     working_dir: /lila-ws
-    entrypoint: ["sbt", "run"]
+    #entrypoint: ["sbt", "run"]
     environment:
       - SBT_OPTS=
         -Dmongodb.uri=mongodb://mongodb:27017/lichess
         -Dredis.uri=redis://redis:6379
+        -Dcsrf.origin=https://chess.scottbking.com
     volumes:
       - $LILA_WS_REPOSITORY_DIR:/lila-ws:delegated
     ports:
